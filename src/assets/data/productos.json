@@ -1,0 +1,37 @@
+[
+    {
+        "codigo": 1,
+        "nombre": "SixPack Pilsener",
+        "imagen": "https://laguarda.com.ec/wp-content/uploads/2020/04/SIX-PACK-PILSENER.png",
+        "precio": 12.00,
+        "descripcion": "300ml"
+    },
+    {
+        "codigo": 2,
+        "nombre": "SixPack Biela Reserva",
+        "imagen": "https://tiaecuador.vteximg.com.br/arquivos/ids/171553/242873000.jpg?v=637381337998700000",
+        "precio": 7.90,
+        "descripcion": "355ml"
+    },
+    {
+        "codigo": 3,
+        "nombre": "Six Pack Club Premium Platino",
+        "imagen": "https://static.frecuento.com//medias/40366540-01-BASEIMAGE-Midres?context=bWFzdGVyfGZyZWN1ZW50b3w2MjI3OTl8aW1hZ2UvanBlZ3xmcmVjdWVudG8vaGU1L2g4Ni85MDg1MzE5NDEzNzkwLmpwZ3xkNTk2MDZmZTFhNDhjNjU0MmYzNjNjMTVhOTM3MTM1ZjJkMzA2NDcxNjFmNDUwM2YxYWI0YTg4ZmQ4ZWE1M2M30",
+        "precio": 10.99,
+        "descripcion": "330ml"
+    },
+    {
+        "codigo": 4,
+        "nombre": "SixPack Siembra",
+        "imagen": "https://images.rappi.com.ec/products/1179311-1620260044079.png?d=136x136",
+        "precio": 7.25,
+        "descripcion": "330ml"
+    },
+    {
+        "codigo": 5,
+        "nombre": "SixPack Stella",
+        "imagen": "https://mitienda.ec/wp-content/uploads/2020/08/stella_artois_sixpack.jpg",
+        "precio": 7.75,
+        "descripcion": "330ml"
+    }
+]

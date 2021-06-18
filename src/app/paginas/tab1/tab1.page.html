@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-menu-button autoHide="true" menuId="primerMenu"></ion-menu-button> 
+    </ion-buttons>
+    <ion-title class="ion-text-center titulo">ALLICE</ion-title>
+    <ion-buttons slot="end" (click)="irCarrito()">
+      <ion-badge color="danger" mode="ios"> {{totalCarrito()}} </ion-badge>
+      <ion-icon name="cart-outline" size="large" class="ion-padding-end"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment color="warning" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="cervezas" layout="icon-start">
+        <ion-label>Cervezas</ion-label>
+        <ion-icon size="large" name="beer"></ion-icon>
+      </ion-segment-button>
+       
+      <ion-segment-button value="licores" layout="icon-start">
+        <i  class="fas fa-2x fa-wine-bottle"></i>
+        <ion-label>Licores</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="piqueos" layout="icon-start">
+        <i class="fab fa-2x fa-gulp"></i>
+        <ion-label>Piqueos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
+      <app-cervezas></app-cervezas>
+    </div>
+
+    <div *ngSwitchCase="'licores'" class="ion-margin-bottom">
+      <app-licores></app-licores>
+    </div>
+
+    <div *ngSwitchCase="'piqueos'" class="ion-margin-bottom">
+      <app-piqueos></app-piqueos>
+    </div>
+
+    
+  </div>
+
+</ion-content>

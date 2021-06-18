@@ -1,0 +1,41 @@
+<div class="main-card">
+  <ion-grid >
+    <ion-row class="ion-justify-content-center">
+      <ion-col  *ngFor="let item of listPro">
+        <ion-card mode="ios">
+          <ion-card-content>
+            <ion-img class="border-img" [src]="item.imagen">
+            </ion-img>
+            <div class="ion-text-center">
+              <ion-label class="titulos" color="primary"> {{item.nombre}} </ion-label>
+            </div>
+            <div class="ion-text-center">
+              <p>
+                {{item.descripcion}}
+              </p>
+            </div>
+            <div class="ion-text-center">
+              <ion-label class="precio" color="primary">PRECIO</ion-label>
+            </div>
+            <div class="ion-text-center">
+              <ion-label class="valor" color="primary">
+                <b>
+                  {{ item.precio | currency:'USD' }}
+                </b>
+              </ion-label>
+            </div>
+          </ion-card-content>
+          <div class="ion-padding-start ion-padding-end ion-padding-bottom botonCart">
+            <ion-button color="dark" expand="block" (click)="addProducto(item)">
+              <i class="fas fa-cart-plus fa-lg ion-margin-end"></i>
+              <ion-label>
+                Añadir
+              </ion-label>
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</div>
