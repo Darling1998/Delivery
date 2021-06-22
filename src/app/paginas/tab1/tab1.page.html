@@ -1,16 +1,23 @@
 <ion-header class="ion-no-border">
+
   <ion-toolbar>
-    <ion-buttons slot="start" >
+    <ion-buttons slot="start" (click)="submit()">
+      <ion-button color="orange">
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" >
       <ion-menu-button autoHide="true" menuId="primerMenu"></ion-menu-button> 
     </ion-buttons>
-    <ion-title class="ion-text-center titulo">ALLICE</ion-title>
-    <ion-buttons slot="end" (click)="irCarrito()">
+    <!-- <ion-title class="ion-text-center titulo">ALLICE</ion-title> -->
+<!--     <ion-buttons slot="end" (click)="irCarrito()">
       <ion-badge color="danger" mode="ios"> {{totalCarrito()}} </ion-badge>
       <ion-icon name="cart-outline" size="large" class="ion-padding-end"></ion-icon>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
   <ion-toolbar>
-    <ion-segment color="warning" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+    <ion-segment color="orange" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="cervezas" layout="icon-start">
         <ion-label>Cervezas</ion-label>
         <ion-icon size="large" name="beer"></ion-icon>
@@ -30,6 +37,7 @@
 </ion-header>
 
 <ion-content>
+   <app-search mode="ios"></app-search> 
   <div [ngSwitch]="type">
     <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
       <app-cervezas></app-cervezas>

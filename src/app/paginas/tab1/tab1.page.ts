@@ -42,4 +42,7 @@ export class Tab1Page implements OnInit {
     return this.listCart.length;
   }
 
+  submit(){
+    
+  }
 }

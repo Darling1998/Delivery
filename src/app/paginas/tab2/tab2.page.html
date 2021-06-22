@@ -1,8 +1,20 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
+
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-buttons slot="start" (click)="submit()">
+      <ion-button color="orange">
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" >
+      <ion-menu-button autoHide="true" menuId="primerMenu"></ion-menu-button> 
+    </ion-buttons>
+    <!-- <ion-title class="ion-text-center titulo">ALLICE</ion-title> -->
+<!--     <ion-buttons slot="end" (click)="irCarrito()">
+      <ion-badge color="danger" mode="ios"> {{totalCarrito()}} </ion-badge>
+      <ion-icon name="cart-outline" size="large" class="ion-padding-end"></ion-icon>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +24,6 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<!-- 
+  <app-explore-container name="Tab 2 page"></app-explore-container> -->
 </ion-content>
