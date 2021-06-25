@@ -5,3 +5,9 @@ export interface Producto{
     precio:      number;
     descripcion: string;
 }
+
+export interface IDetallePedido{
+    cant:     number;
+    producto: Producto;
+    total:    number;
+}

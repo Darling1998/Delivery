@@ -1,13 +1,12 @@
 <div class="main-card">
-  <ion-grid >
+  <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col  *ngFor="let item of listPro">
+      <ion-col *ngFor="let item of listPro" size="6">
         <ion-card mode="ios">
           <ion-card-content>
-            <ion-img class="border-img" [src]="item.imagen">
-            </ion-img>
+            <ion-img class="border-img" [src]="item.imagen"></ion-img>
             <div class="ion-text-center">
-              <ion-label class="titulos" color="primary"> {{item.nombre}} </ion-label>
+              <ion-label class="titulos" color="warning"> {{item.nombre}} </ion-label>
             </div>
             <div class="ion-text-center">
               <p>
@@ -19,9 +18,7 @@
             </div>
             <div class="ion-text-center">
               <ion-label class="valor" color="primary">
-                <b>
-                  {{ item.precio | currency:'USD' }}
-                </b>
+                <b>{{ item.precio | currency:'USD' }}</b>
               </ion-label>
             </div>
           </ion-card-content>
@@ -37,5 +34,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  
 </div>

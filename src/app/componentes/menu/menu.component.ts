@@ -18,4 +18,8 @@ export class MenuComponent implements OnInit {
     document.body.classList.toggle('dark');
   } 
 
+  cerrarCesion(){
+    
+  }
+
 }

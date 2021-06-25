@@ -9,40 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-
   type: string;
-  listCart: Producto[] = [];
-  constructor(private router: Router,
 
-    private paramSer: ParametersService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.type = 'cervezas';
-    this.paramSer.$getListSource.subscribe(data => {
-      this.listCart = data;
-
-    }).unsubscribe();
-
-
   }
 
-  segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+  abrirModalDirecciones(){
 
-  }
-
-  irCarrito() {
-    this.paramSer.enviarList(this.listCart);
-    this.router.navigate(['/carrito']);
-  }
-
-
-
-  totalCarrito(): number {
-    return this.listCart.length;
-  }
-
-  submit(){
-    
   }
 }

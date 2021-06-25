@@ -1,13 +1,11 @@
-*{
-    font-family: lato;
-}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .menu-header-bg{
     height: 180px;
     width: 350px;
     background:#FF5733;
-    background: linear-gradient(90deg, #FF5733 0%, #d7694d 100%);
-    box-shadow: 0px 1px 10px rgba(98,140,255,0.5);
+    background: linear-gradient(90deg, #FF5733 0%, #f0b923 100%);
+    box-shadow: 0px 1px 10px rgba(209, 151, 26, 0.781);
     transform: rotate(-15deg);
     border-radius: 10px 10px 10px 50px;
     margin-left: -18px;
@@ -28,6 +26,11 @@
         border-radius: 50%;
         border: 7px solid #FF5733;
         margin-right:14px
+    }
+
+    .title-menu{
+        font-family: 'Pacifico', cursive;
+        font-size: 2.3em;
     }
 
     h2{
