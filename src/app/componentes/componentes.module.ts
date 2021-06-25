@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PiqueosComponent } from './piqueos/piqueos.component';
@@ -17,7 +18,8 @@ import { SearchComponent } from './search/search.component';
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   exports:[
     PiqueosComponent,

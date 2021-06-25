@@ -10,6 +10,7 @@ import { Producto } from '../../interfaces/interfaces';
 export class CervezasComponent implements OnInit {
   listPro:Producto[]=[];
   listBag:Producto[]=[];
+  textBuscar: string = "";
 
   constructor(private proSer: ProductosService,
               private paramSer: ParametersService) { }
@@ -19,6 +20,11 @@ export class CervezasComponent implements OnInit {
     this.paramSer.$getListSource.subscribe(data=>{
       this.listBag = data;
     }).unsubscribe();
+  }
+
+  buscarPro(event){
+    this.textBuscar=event;
+    console.log(event)
   }
 
   addProducto(item){

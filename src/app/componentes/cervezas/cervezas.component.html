@@ -1,7 +1,8 @@
+<app-search mode="ios" (textoFiltro)="buscarPro($event)"></app-search>
 <div class="main-card">
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col *ngFor="let item of listPro" size="6">
+      <ion-col *ngFor="let item of listPro | filtro:textBuscar:'nombre'" size="6">
         <ion-card mode="ios">
           <ion-card-content>
             <ion-img class="border-img" [src]="item.imagen"></ion-img>

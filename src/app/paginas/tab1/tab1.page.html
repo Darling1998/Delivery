@@ -31,8 +31,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-   <app-search mode="ios"></app-search> 
+<ion-content [fullscreen]="true"> 
   <div [ngSwitch]="type">
     <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
       <app-cervezas></app-cervezas>
