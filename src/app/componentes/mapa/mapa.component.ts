@@ -7,27 +7,25 @@ import { Geolocation } from '@capacitor/geolocation';
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
-  styleUrls: ['./mapa.component.scss'],
+  styleUrls: ['./mapa.component.scss']
 })
 export class MapaComponent implements OnInit {
-  
+
   mapbox = (mapboxgl as typeof mapboxgl);
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/streets-v11';
-  lat:number;
-  lng :number;
-  zoom = 15;
+  lat: number= -2.2433979;
+  lng: number= -80.9318224;
+  zoom = 16.6;
 
-  constructor( ) {
+  constructor() {
     this.mapbox.accessToken = environment.mapbox.accessToken;
-   }
+  }
 
-
- async  ngOnInit() {
-   
-    const posicion=await Geolocation.getCurrentPosition();
-    this.lat=posicion.coords.latitude;
-    this.lng=posicion.coords.longitude;
+  ngOnInit() {
+    /* const posicion = await Geolocation.getCurrentPosition();
+    this.lat = posicion.coords.latitude;
+    this.lng = posicion.coords.longitude;
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
@@ -35,10 +33,33 @@ export class MapaComponent implements OnInit {
       center: [this.lng, this.lat]
     });
     this.map.addControl(new mapboxgl.NavigationControl());
-    var marker = new mapboxgl.Marker()
-    .setLngLat([this.lng,this.lat])
+    this.crearMarcador(this.lng, this.lat) */
+  }
+
+  ionViewDidEnter(){
+    //const posicion = await Geolocation.getCurrentPosition();
+    /* this.lat = posicion.coords.latitude;
+    this.lng = posicion.coords.longitude; */
+    this.map = new mapboxgl.Map({
+      container: 'map',
+      style: this.style,
+      zoom: this.zoom,
+      center: [this.lng, this.lat]
+    });
+    this.map.addControl(new mapboxgl.NavigationControl());
+    this.crearMarcador(this.lng, this.lat);
+  }
+
+  crearMarcador(lng: number, lat: number){
+    const marker = new mapboxgl.Marker({
+      draggable: true
+    })
+    .setLngLat([lng, lat])
     .addTo(this.map);
 
+    marker.on('drag', () => {
+      console.log(marker.getLngLat());
+    })
   }
- 
+
 }

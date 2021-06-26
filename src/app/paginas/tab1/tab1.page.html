@@ -7,12 +7,12 @@
     </ion-buttons>
 
     <ion-buttons slot="end" >
-      <ion-menu-button autoHide="true" menuId="primerMenu"></ion-menu-button> 
+      <ion-menu-button color="orange" autoHide="true" menuId="primerMenu"></ion-menu-button> 
     </ion-buttons>
   </ion-toolbar>
 
   <ion-toolbar>
-    <ion-segment color="orange" [(ngModel)]="type">
+    <ion-segment color="orange" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="cervezas" layout="icon-start">
         <ion-label>Cervezas</ion-label>
         <ion-icon size="large" name="beer"></ion-icon>
@@ -28,6 +28,8 @@
         <ion-label>Piqueos</ion-label>
       </ion-segment-button>
     </ion-segment>
+  </ion-toolbar>
+  <ion-toolbar>
     <app-search mode="ios" (textoFiltro)="buscarPro($event)"></app-search>
   </ion-toolbar>
 </ion-header>

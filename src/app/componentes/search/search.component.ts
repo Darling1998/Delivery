@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { IonSearchbar } from '@ionic/angular';
 
 
 @Component({
@@ -17,5 +18,15 @@ export class SearchComponent implements OnInit {
   buscar(event){
     this.textBuscar = event.detail.value;
     this.textoFiltro.emit(this.textBuscar);
+  }
+
+  onCancel(ev) { 
+    // Reset the field
+    ev.target.value = '';
+    this.textBuscar = "";
+  }
+
+  reset(){
+    this.textBuscar="";
   }
 }

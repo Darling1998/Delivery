@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'mis-ubicaciones',
     loadChildren: () => import('./paginas/mis-ubicaciones/mis-ubicaciones.module').then( m => m.MisUbicacionesPageModule)
   },
+  {
+    path: 'about',
+    loadChildren: () => import('./paginas/about/about.module').then( m => m.AboutPageModule)
+  }
 ];
 @NgModule({
   imports: [

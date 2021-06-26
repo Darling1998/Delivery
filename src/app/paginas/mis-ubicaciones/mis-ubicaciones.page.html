@@ -1,14 +1,41 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>mis-ubicaciones</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/tabs"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
 
-<ion-content>
-  <ion-card>
+<ion-content [fullscreen]="true">
+  <ion-item lines="none" color="transparent">
+    <ion-label class="ion-margin-top titulo" color="orange">Mis <br>Direcciones</ion-label>
+  </ion-item>
+  
+  <!-- <ion-card>
     <app-mapa></app-mapa>
+  </ion-card> -->
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none" color="transparent">
+        <ion-icon name="location-outline" color="orange" size="large" class="ion-margin-end"></ion-icon>
+        <ion-label>Mi Casa</ion-label>
+      </ion-item>
+    </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none" color="transparent">
+        <ion-icon name="location-outline" color="orange" size="large" class="ion-margin-end"></ion-icon>
+        <ion-label>Trabajo</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-padding-top" size="auto">
+      <ion-button color="orange" expand="block" mode="ios" size="large" shape="round" fill="outline" (click)="abrirMapa()">
+        Añadir Dirección
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

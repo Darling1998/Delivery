@@ -1,8 +1,6 @@
 import { ProductosService } from './../../servicios/productos.service';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../interfaces/interfaces';
-import { ParametersService } from '../../servicios/parameters.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -19,6 +17,14 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
     this.type = 'cervezas';
+    this.cargarProductos();
+  }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+    this.textBuscar = "";
+    this.listPro=[];
+    //Carga la data con la categoria
     this.cargarProductos();
   }
 
