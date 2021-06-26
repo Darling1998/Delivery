@@ -28,13 +28,15 @@
         <ion-label>Piqueos</ion-label>
       </ion-segment-button>
     </ion-segment>
+    <app-search mode="ios" (textoFiltro)="buscarPro($event)"></app-search>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true"> 
   <div [ngSwitch]="type">
     <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
-      <app-cervezas></app-cervezas>
+      <app-cervezas *ngFor="let item of listPro | filtro:textBuscar:'nombre'"
+      [product]="item"></app-cervezas>
     </div>
 
     <div *ngSwitchCase="'licores'" class="ion-margin-bottom">

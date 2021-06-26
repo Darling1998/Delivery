@@ -1,3 +1,4 @@
+import { PipesModule } from './../../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import { ComponentesModule } from 'src/app/componentes/componentes.module';
     IonicModule,
     CommonModule,
     FormsModule,
+    PipesModule,
     Tab1PageRoutingModule,
     ComponentesModule
   ],
