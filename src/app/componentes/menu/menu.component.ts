@@ -9,12 +9,12 @@ import { Persona } from '../../models/PersonaModel';
 })
 export class MenuComponent implements OnInit {
 
-  darkMode:boolean=false;
+  darkMode: boolean = false;
   private personaSeccion: Persona;
   idRole: string = null;
 
   constructor(
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,19 +27,19 @@ export class MenuComponent implements OnInit {
     } */
   }
 
-  cambioCheck(){
-    this.darkMode= !this.darkMode;
+  cambioCheck() {
+    this.darkMode = !this.darkMode;
     document.body.classList.toggle('dark');
-  } 
+  }
 
-  cerrarCesion(){
-    /* let usuarioActual = JSON.parse(localStorage.getItem('personaSeccion'));
+  cerrarCesion() {
+    let usuarioActual = JSON.parse(localStorage.getItem('personaSeccion'));
 
-    if(usuarioActual){
-        localStorage.clear();
-        location.href = '/login';
-        this.router.dispose();
-    } */
+    if (usuarioActual) {
+      localStorage.clear();
+      location.href = '/login';
+      this.router.dispose();
+    }
   }
 
 }

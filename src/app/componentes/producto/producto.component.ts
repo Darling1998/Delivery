@@ -1,17 +1,16 @@
 import { ParametersService } from './../../servicios/parameters.service';
-import { ProductosService } from './../../servicios/productos.service';
+import { ProductosService } from 'src/app/servicios/productos.service';
 import { Producto } from './../../interfaces/interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-licores',
-  templateUrl: './licores.component.html',
-  styleUrls: ['./licores.component.scss'],
+  selector: 'app-producto',
+  templateUrl: './producto.component.html',
+  styleUrls: ['./producto.component.scss'],
 })
-export class LicoresComponent implements OnInit {
-
-  listLic:Producto[]=[];
-  listBag:Producto[]=[];
+export class ProductoComponent implements OnInit {
+  listPro: Producto[]=[];
+  listBag: Producto[]=[];
   
   @Input() product: Producto;
 

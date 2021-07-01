@@ -1,49 +1,143 @@
-<ion-content color="">
-  
-  <!--   <div class="padding">
-      <div style="padding: 15px;">
-        <ion-input placeholder="Usuario" type="text"  color="dark" name="usu_usuario" [(ngModel)]="usu_usuario"></ion-input>
-      </div>
-   
-      <div style="padding: 15px;">
-        <ion-input placeholder="password" type="password" color="dark"  name="usu_password" [(ngModel)]="usu_password"></ion-input>
-      </div>
-   
+<ion-content class="content" [fullscreen]="true">
+  <!-- <div class="center-btn">
+    <h4 class="titulo">INICIAR SESIÓN</h4>
+  </div> -->
+
+
+  <ion-slides class="mainSlide" #slidePrincipal>
+    <ion-slide>
       <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col style="width: 50%; padding: 10px;">
-            <ion-button (click)="login()" expand="block" color="primary" shape="round" style="font-size: 12px;">Iniciar Sesion</ion-button>
+        <ion-row>
+          <ion-col>
+            <h1 class="titulo">Iniciar Sesión</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <form (ngSubmit)="login(flogin)" #flogin="ngForm">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <div class="card-form">
+                      <ion-card mode="ios"  class="class-container">
+                        <p class="tag">Ingrese sus credenciales para continuar</p>
+                        <ion-item lines="none" color="transparent">
+                          <ion-input name="email" type="email" [(ngModel)]="loginUser.email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder=" Ingrese Email">
+                            <ion-icon name="person" class="animated tada ion-margin-end" color="orange"></ion-icon>
+                          </ion-input>
+                        </ion-item>
+
+                        <ion-item lines="none" color="transparent">
+                          <ion-input name="password" type="password" [(ngModel)]="loginUser.password" required
+                            placeholder=" Ingrese Contraseña">
+                            <ion-icon name="key" class="animated tada ion-margin-end" color="orange"></ion-icon>
+                          </ion-input>
+                        </ion-item>
+
+                      </ion-card>
+                    </div>
+
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <ion-button type="submit" mode="ios" color="orange" shape="round" class="animated-b flash">
+                      Login
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </form>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </div> -->
-  
-    <ion-card color="medium" mode="ios" class="top-10 degradado" height="10" width="10">
-      <ion-img src="/assets/img/logo.jpeg" align-items="center" width="60" height="60"></ion-img>
-    </ion-card>
-   <div >
-    <div style="padding: 2px;">
-      <ion-item>
-        <ion-label position="floating">Correo</ion-label>
-        <ion-input clear-Input placeholder="Correo" type="text" color="dark" [(ngModel)]="personaLogin.correo"></ion-input>
-      </ion-item>
-    </div>
-  
-    <div style="padding: 5px;">
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input clear-Input placeholder="Contraseña" type="password" color="dark" [(ngModel)]="personaLogin.contrasena"></ion-input>
-      </ion-item>
-    </div>
-  
-    <ion-grid>
-      <ion-row class="ion-text-center" class="padding">
-        <ion-col style="width: 50%; padding: 10px;">
-        
-          <ion-button (click)="login()" expand="full" color="primary">Iniciar Sesion</ion-button>
-        </ion-col>
-  
-      </ion-row>
-    </ion-grid>
-   </div>
-   </ion-content>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1 class="titulo">Registro</h1>
+          </ion-col>
+        </ion-row>
+        <form (ngSubmit)="registro(fRegistro)" #fRegistro="ngForm">
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-label position="floating">Nombre</ion-label>
+                  <ion-input name="nombre" type="text" [(ngModel)]="registerUser.nombre" required>
+                  </ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Apellido</ion-label>
+                  <ion-input name="apellido" [(ngModel)]="registerUser.apellido" type="text" required>
+                  </ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Cédula</ion-label>
+                  <ion-input name="cedula" [(ngModel)]="registerUser.cedula" type="text" required>
+                  </ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Teléfono</ion-label>
+                  <ion-input name="cedula" [(ngModel)]="registerUser.telefono" type="text" required>
+                  </ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Dirección</ion-label>
+                  <ion-input name="direccion" type="text" [(ngModel)]="registerUser.direccion" required>
+                  </ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input name="email" type="email" [(ngModel)]="registerUser.email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input name="password" type="password" [(ngModel)]="registerUser.password" required></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" mode="ios" color="orange" shape="round">
+                Crear usuario
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar color="transparent">
+    <ion-row>
+      <ion-col>
+        <ion-button shape="round" expand="full" mode="ios" size="small" fill="outline" color="orange" (click)="mostrarRegistro()">
+          Ingresar
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button shape="round" expand="full" mode="ios" size="small" fill="outline" color="orange" (click)="mostrarLogin()">
+          Registrarme
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
