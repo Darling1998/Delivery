@@ -1,0 +1,49 @@
+<ion-content color="">
+  
+  <!--   <div class="padding">
+      <div style="padding: 15px;">
+        <ion-input placeholder="Usuario" type="text"  color="dark" name="usu_usuario" [(ngModel)]="usu_usuario"></ion-input>
+      </div>
+   
+      <div style="padding: 15px;">
+        <ion-input placeholder="password" type="password" color="dark"  name="usu_password" [(ngModel)]="usu_password"></ion-input>
+      </div>
+   
+      <ion-grid>
+        <ion-row class="ion-text-center">
+          <ion-col style="width: 50%; padding: 10px;">
+            <ion-button (click)="login()" expand="block" color="primary" shape="round" style="font-size: 12px;">Iniciar Sesion</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div> -->
+  
+    <ion-card color="medium" mode="ios" class="top-10 degradado" height="10" width="10">
+      <ion-img src="/assets/img/logo.jpeg" align-items="center" width="60" height="60"></ion-img>
+    </ion-card>
+   <div >
+    <div style="padding: 2px;">
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input clear-Input placeholder="Correo" type="text" color="dark" [(ngModel)]="personaLogin.correo"></ion-input>
+      </ion-item>
+    </div>
+  
+    <div style="padding: 5px;">
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input clear-Input placeholder="Contraseña" type="password" color="dark" [(ngModel)]="personaLogin.contrasena"></ion-input>
+      </ion-item>
+    </div>
+  
+    <ion-grid>
+      <ion-row class="ion-text-center" class="padding">
+        <ion-col style="width: 50%; padding: 10px;">
+        
+          <ion-button (click)="login()" expand="full" color="primary">Iniciar Sesion</ion-button>
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+   </div>
+   </ion-content>

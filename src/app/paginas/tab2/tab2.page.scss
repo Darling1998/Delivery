@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.titulo{
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+}
+
 .cart{
-    width: 200px;
+    width: 300px;
 }
 
 .titulo{
@@ -9,4 +16,50 @@
 
 .bag{
     color: orange;
+}
+
+.poster-col {
+    height: 200px;
+    .trash{
+        margin-left: 60px;
+    }
+    img {
+        border-radius: 40px;
+    }
+
+}
+
+.name-pro{
+    font-size: 20px;
+    color: #FF5733;
+}
+  
+.rate {
+    padding-top: 5px;
+
+    i {
+      color: gold;
+    }
+
+    .price{
+        font-size: 1.33em;
+    }
+}
+  
+h5 {
+    margin-top: 4px;
+}
+    
+.swiper-slide-prev {
+    opacity: .5;
+    transform: rotate(-8deg);
+}
+  
+.swiper-slide-next {
+    opacity: .5;
+    transform: rotate(8deg);
+}
+  
+.swiper-slide {
+    transition: .4s all;
 }

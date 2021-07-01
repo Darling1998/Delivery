@@ -42,11 +42,11 @@
     </div>
 
     <div *ngSwitchCase="'licores'" class="ion-margin-bottom">
-      <app-licores></app-licores>
+      <app-licores *ngFor="let item of listLic | filtro:textBuscar:'nombre'" [product]="item"></app-licores>
     </div>
 
     <div *ngSwitchCase="'piqueos'" class="ion-margin-bottom">
-      <app-piqueos></app-piqueos>
+      <app-piqueos *ngFor="let item of listPiq | filtro:textBuscar:'nombre'" [product]="item"></app-piqueos>
     </div>
   </div>
 </ion-content>

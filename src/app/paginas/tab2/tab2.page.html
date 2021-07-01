@@ -6,8 +6,8 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-buttons slot="end" >
-      <ion-menu-button autoHide="true" menuId="primerMenu"></ion-menu-button> 
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="true" menuId="primerMenu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -50,7 +50,7 @@
   </div>
   <div class="container" *ngIf="this.list.length != 0">
     <h4 class="ion-text-center titulo">Productos de mi Pedido</h4>
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row>
         <ion-col size="2">CANT</ion-col>
         <ion-col size="4" class="ion-text-center">DETALLE</ion-col>
@@ -75,12 +75,47 @@
           <div class="ion-text-end"> {{ item.total | currency:'USD' }} </div> 
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
+    <ion-slides [options]="options">
+      <ion-slide *ngFor="let item of listBagRef">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" class="poster-col">
+              <img class="poster" [src]="item.producto.imagen">
+              <ion-fab class="trash" vertical="bottom" horizontal="center">
+                <ion-fab-button color="danger" size="small">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </ion-col>
+            <ion-col size="12">
+              
+              <h5 class="ion-no-margin name-pro"> {{item.cant}} {{item.producto.nombre}} </h5>
+              <p class="ion-no-margin rate">
+                <strong>{{item.producto.precio | currency: 'USD'}} c/u</strong><br>
+                <i class="fas fa-dollar-sign fa-lg ion-margin-end"></i>
+                <span class="price">{{item.total.toFixed(2)}}</span>
+              </p>
+              <!-- que carajos haces -->
+              
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+
     <ion-note class="ion-padding" color="secondary">Costo Envio: </ion-note><br>
     <ion-note class="ion-padding" color="medium"> Santa Elena: $2.00</ion-note><br>
     <ion-note class="ion-padding" color="medium">Libertad: $1.00</ion-note><br>
     <ion-note class="ion-padding" color="medium">Salinas: $1.50 </ion-note>
-    <ion-button class="ion-padding" color="success" expand="block" fill="outline" >
+
+    <ion-card>
+      <ion-card-content>
+        hola
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button class="ion-padding" color="warning" expand="block" fill="outline">
       GENERAR PEDIDO
     </ion-button>
   </div>

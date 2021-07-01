@@ -9,7 +9,9 @@ import { Producto } from '../../interfaces/interfaces';
 })
 export class Tab1Page implements OnInit {
   type: string;
-  listPro:Producto[]=[];
+  listPro: Producto[]=[];
+  listLic: Producto[]=[];
+  listPiq: Producto[]=[];
   listBag:Producto[]=[];
   textBuscar: string = "";
 
@@ -17,22 +19,48 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
     this.type = 'cervezas';
-    this.cargarProductos();
+    this.cargarCervezas();
   }
 
   segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+    //console.log('Segment changed', ev);
     this.textBuscar = "";
     this.listPro=[];
     //Carga la data con la categoria
-    this.cargarProductos();
+    if(ev.detail.value == 'cervezas'){
+      this.cargarCervezas();
+    } else if(ev.detail.value == 'licores'){
+      this.cargarLicores();
+    } else{
+      this.cargarPiqueos();
+    }
   }
 
-  cargarProductos(){
-    this.proSer.getProductos().subscribe(
+
+
+  cargarCervezas(){
+    this.proSer.getCervezas().subscribe(
       data => {
         console.log(data);
         this.listPro = data;
+      }
+    );
+  }
+
+  cargarLicores(){
+    this.proSer.getLicores().subscribe(
+      data => {
+        console.log(data);
+        this.listLic = data;
+      }
+    );
+  }
+
+  cargarPiqueos(){
+    this.proSer.getPiqueos().subscribe(
+      data => {
+        console.log(data);
+        this.listPiq = data;
       }
     );
   }

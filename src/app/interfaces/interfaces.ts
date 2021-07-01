@@ -1,9 +1,9 @@
 export interface Producto{
-    codigo:      number;
+    idProducto:      number;
     nombre:      string;
-    imagen:      string;
-    precio:      number;
     descripcion: string;
+    precio:      number;
+    imagen:      string;
 }
 
 export interface IDetallePedido{
