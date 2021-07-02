@@ -58,7 +58,7 @@ export class Tab2Page {
     this.list.forEach(elem =>{
       if(!this.listBagRef.find(d => d.producto.idProducto == elem.idProducto)){ //busca en la lista agrupada si existe un producto
         let cant = this.list.filter( fil => fil.idProducto == elem.idProducto).length; //# de veces que se repite el producto en la lista
-        let total = elem.precio * cant;
+        let total = elem.precio_venta * cant;
         let producto = JSON.parse(JSON.stringify(elem)); //asegura el parseo de un objeto tipo producto
         this.listBagRef.push({cant, producto, total});
       }

@@ -1,4 +1,4 @@
-<ion-content class="content" [fullscreen]="true">
+<ion-content class="content" color="transparent" [fullscreen]="true">
   <!-- <div class="center-btn">
     <h4 class="titulo">INICIAR SESIÓN</h4>
   </div> -->
@@ -14,7 +14,7 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <form (ngSubmit)="login(flogin)" #flogin="ngForm">
+            <form id="form" #formulario="ngForm">
               <ion-grid>
                 <ion-row>
                   <ion-col>
@@ -22,14 +22,14 @@
                       <ion-card mode="ios"  class="class-container">
                         <p class="tag">Ingrese sus credenciales para continuar</p>
                         <ion-item lines="none" color="transparent">
-                          <ion-input name="email" type="email" [(ngModel)]="loginUser.email"
+                          <ion-input name="email" type="email" [(ngModel)]="personaLogin.correo"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder=" Ingrese Email">
                             <ion-icon name="person" class="animated tada ion-margin-end" color="orange"></ion-icon>
                           </ion-input>
                         </ion-item>
 
                         <ion-item lines="none" color="transparent">
-                          <ion-input name="password" type="password" [(ngModel)]="loginUser.password" required
+                          <ion-input name="password" type="password" [(ngModel)]="personaLogin.contrasena" required
                             placeholder=" Ingrese Contraseña">
                             <ion-icon name="key" class="animated tada ion-margin-end" color="orange"></ion-icon>
                           </ion-input>
@@ -43,7 +43,8 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button type="submit" mode="ios" color="orange" shape="round" class="animated-b flash">
+                    <ion-button type="submit" mode="ios" color="orange" shape="round" class="animated-b flash" [disabled]="formulario.invalid" 
+                    (click)="login()">
                       Login
                     </ion-button>
                   </ion-col>
@@ -63,7 +64,7 @@
             <h1 class="titulo">Registro</h1>
           </ion-col>
         </ion-row>
-        <form (ngSubmit)="registro(fRegistro)" #fRegistro="ngForm">
+        <form  #fRegistro="ngForm">
           <ion-row>
             <ion-col>
               <ion-list>
@@ -80,20 +81,8 @@
                 </ion-item>
 
                 <ion-item>
-                  <ion-label position="floating">Cédula</ion-label>
-                  <ion-input name="cedula" [(ngModel)]="registerUser.cedula" type="text" required>
-                  </ion-input>
-                </ion-item>
-
-                <ion-item>
                   <ion-label position="floating">Teléfono</ion-label>
                   <ion-input name="cedula" [(ngModel)]="registerUser.telefono" type="text" required>
-                  </ion-input>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label position="floating">Dirección</ion-label>
-                  <ion-input name="direccion" type="text" [(ngModel)]="registerUser.direccion" required>
                   </ion-input>
                 </ion-item>
 
