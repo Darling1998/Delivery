@@ -1,7 +1,7 @@
 import { ParametersService } from './../../servicios/parameters.service';
-import { ProductosService } from 'src/app/servicios/productos.service';
 import { Producto } from './../../interfaces/interfaces';
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-producto',
@@ -9,23 +9,27 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./producto.component.scss'],
 })
 export class ProductoComponent implements OnInit {
-  listPro: Producto[]=[];
-  listBag: Producto[]=[];
-  
+  listPro: Producto[] = [];
+  listBag: Producto[] = [];
+  subscription: Subscription;
+
   @Input() product: Producto;
 
-  constructor(private proSer: ProductosService,
-              private paramSer: ParametersService) { }
+  constructor(private paramSer: ParametersService) { }
 
   ngOnInit() {
-    this.paramSer.$getListSource.subscribe(data=>{
+    this.subscription = this.paramSer.$getListSource.subscribe(data => {
       this.listBag = data;
-    }).unsubscribe();
+    });
   }
 
-  addProducto(item){
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  addProducto(item) {
     this.listBag.push(item);
     this.paramSer.enviarList(this.listBag);
-    console.log(this.listBag);
+    //console.log(this.listBag);
   }
 }

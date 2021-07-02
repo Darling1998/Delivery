@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Producto, IDetallePedido } from './../../interfaces/interfaces';
 import { ParametersService } from './../../servicios/parameters.service';
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tab2',
@@ -11,9 +12,11 @@ import { Component } from '@angular/core';
 export class Tab2Page {
   list: Producto[] = [];
   listBagRef: IDetallePedido[]=[];
+  subscription: Subscription;
+
   options = {
     centeredSlides: true,
-    loop: true,
+    slidesPerView: 1.1,
     spaceBetween: -100,
   };
 
@@ -24,18 +27,22 @@ export class Tab2Page {
     
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   ionViewWillEnter(){
     this.cargarDatosProductos();
     this.newLista();
   }
 
   cargarDatosProductos(){
-    this.listPedido.$getListSource.subscribe(
+    this.subscription = this.listPedido.$getListSource.subscribe(
       data => {
         //console.log(data);
         this.list = data;
       }
-    ).unsubscribe(); 
+    ); 
   }
 
   abrirModalDirecciones(){
@@ -59,4 +66,13 @@ export class Tab2Page {
     //console.log(this.listBagRef);
   }
 
+  calcularTotal(){
+    return this.listBagRef.map(d => d.total).reduce((a, b) => a + b, 0);
+  }
+
+  eliminarProducto(item){
+    this.listBagRef = this.listBagRef.filter(std => std.producto.idProducto != item.producto.idProducto);
+    this.list = this.list.filter(std => std.idProducto != item.producto.idProducto);
+    this.listPedido.enviarList(this.list); //Actualiza el badge de productos
+  }
 }

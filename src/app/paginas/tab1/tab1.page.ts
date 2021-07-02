@@ -12,7 +12,7 @@ export class Tab1Page implements OnInit {
   listPro: Producto[]=[];
   listLic: Producto[]=[];
   listPiq: Producto[]=[];
-  listBag:Producto[]=[];
+  listBag: Producto[]=[];
   textBuscar: string = "";
 
   constructor(private proSer: ProductosService) { }
@@ -23,9 +23,7 @@ export class Tab1Page implements OnInit {
   }
 
   segmentChanged(ev: any) {
-    //console.log('Segment changed', ev);
-    this.textBuscar = "";
-    this.listPro=[];
+    this.listPro = [];
     //Carga la data con la categoria
     if(ev.detail.value == 'cervezas'){
       this.cargarCervezas();
@@ -35,8 +33,6 @@ export class Tab1Page implements OnInit {
       this.cargarPiqueos();
     }
   }
-
-
 
   cargarCervezas(){
     this.proSer.getCervezas().subscribe(
