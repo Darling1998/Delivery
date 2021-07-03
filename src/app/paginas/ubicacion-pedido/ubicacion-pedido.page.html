@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ubicacion-pedido</ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <div class="ion-margin-top titulo">Ubicación<br>De Mi Pedido</div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div id='map' class="map" style='width: 100vw; height: 100vh;'></div>
+  <!-- <div class="card">
+    hola
+  </div>  -->
 </ion-content>
+
+<ion-footer mode="ios" color="transparent" class="ion-no-border ion-justify-content-center">
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-icon color="ocean" size="large" slot="start" name="time-outline"></ion-icon>
+        <ion-label>Tiempo de Espera: </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-footer>

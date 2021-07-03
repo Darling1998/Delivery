@@ -1,7 +1,7 @@
 import { ModalAddressPage } from './../modal-address/modal-address.page';
-import { MenuController, ModalController } from '@ionic/angular';
+import { IonSearchbar, MenuController, ModalController } from '@ionic/angular';
 import { ProductosService } from './../../servicios/productos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Producto } from '../../interfaces/interfaces';
 
 @Component({
@@ -16,6 +16,7 @@ export class Tab1Page implements OnInit {
   listPiq: Producto[]=[];
   listBag: Producto[]=[];
   textBuscar: string = "";
+  @ViewChild(IonSearchbar) searchbar: IonSearchbar;
 
   constructor(private proSer: ProductosService, private modalCtrl: ModalController, private menuCtrl: MenuController) { }
 
@@ -27,11 +28,16 @@ export class Tab1Page implements OnInit {
   ionViewWillEnter(){
     this.menuCtrl.swipeGesture(false, 'principal');
   }
-  
+
+  buscar(event){
+    this.textBuscar = event.detail.value;
+  }
+
   segmentChanged(ev: any) {
-    this.listPro = [];
-    //Carga la data con la categoria
-    if(ev.detail.value == 'cervezas'){
+    this.listPro = []; 
+    this.textBuscar = "";
+    this.searchbar.value = ""; //Resetea el valor del input
+    if(ev.detail.value == 'cervezas'){ //Carga la data con la categoria
       this.cargarCervezas();
     } else if(ev.detail.value == 'licores'){
       this.cargarLicores();
@@ -43,7 +49,6 @@ export class Tab1Page implements OnInit {
   cargarCervezas(){
     this.proSer.getCervezas().subscribe(
       data => {
-        console.log(data);
         this.listPro = data;
       }
     );
@@ -52,7 +57,6 @@ export class Tab1Page implements OnInit {
   cargarLicores(){
     this.proSer.getLicores().subscribe(
       data => {
-        console.log(data);
         this.listLic = data;
       }
     );
@@ -61,14 +65,9 @@ export class Tab1Page implements OnInit {
   cargarPiqueos(){
     this.proSer.getPiqueos().subscribe(
       data => {
-        console.log(data);
         this.listPiq = data;
       }
     );
-  }
-
-  buscarPro(event){
-    this.textBuscar = event;
   }
 
   async abrirModalDirecciones(){

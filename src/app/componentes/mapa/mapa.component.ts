@@ -23,23 +23,9 @@ export class MapaComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* const posicion = await Geolocation.getCurrentPosition();
-    this.lat = posicion.coords.latitude;
-    this.lng = posicion.coords.longitude;
-    this.map = new mapboxgl.Map({
-      container: 'map',
-      style: this.style,
-      zoom: this.zoom,
-      center: [this.lng, this.lat]
-    });
-    this.map.addControl(new mapboxgl.NavigationControl());
-    this.crearMarcador(this.lng, this.lat) */
   }
 
   ionViewDidEnter(){
-    //const posicion = await Geolocation.getCurrentPosition();
-    /* this.lat = posicion.coords.latitude;
-    this.lng = posicion.coords.longitude; */
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,

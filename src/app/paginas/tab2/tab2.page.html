@@ -40,9 +40,9 @@
       </ion-row>
 
       <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-padding-top" size="auto">
-          <ion-button class="ion-padding" color="ocean" expand="block" fill="outline" (click)="irProductos()">
-            AÑADIR PRODUCTOS
+        <ion-col class="ion-padding" size="auto">
+          <ion-button mode="ios" color="ocean" size="large" expand="block" shape="round" fill="outline" (click)="irProductos()">
+            Añadir Productos
           </ion-button>
         </ion-col>
       </ion-row>
@@ -86,12 +86,19 @@
 
     <ion-card>
       <ion-card-content>
-        <ion-item>{{calcularTotal() | currency:'USD'}}</ion-item>
+        <ion-item lines="none">
+          <ion-label>{{calcularTotal() | currency:'USD'}}</ion-label>
+        </ion-item>
       </ion-card-content>
     </ion-card>
 
-    <ion-button class="ion-padding" color="orange" expand="block" fill="outline">
-      GENERAR PEDIDO
-    </ion-button>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-padding" size="auto">
+        <ion-button mode="ios" size="large" color="ocean" expand="block" shape="round" fill="outline">
+          Generar Pedido
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

@@ -1,12 +1,12 @@
+import { ProductoModule } from './../../componentes/producto/producto.module';
 import { PipesModule } from './../../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
-
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { ComponentesModule } from 'src/app/componentes/componentes.module';
+
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { ComponentesModule } from 'src/app/componentes/componentes.module';
     FormsModule,
     PipesModule,
     Tab1PageRoutingModule,
-    ComponentesModule
+    ProductoModule
   ],
   declarations: [Tab1Page]
 })

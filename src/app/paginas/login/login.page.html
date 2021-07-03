@@ -19,14 +19,14 @@
                         <ion-item lines="none" color="transparent">
                           <ion-input name="email" type="email" [(ngModel)]="personaLogin.correo"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder=" Ingrese Email">
-                            <ion-icon name="person" class="animated tada ion-margin-end" color="orange"></ion-icon>
+                            <ion-icon name="person" class="animated tada ion-margin-end" color="ocean"></ion-icon>
                           </ion-input>
                         </ion-item>
 
                         <ion-item lines="none" color="transparent">
                           <ion-input name="password" type='password'
                             [(ngModel)]="personaLogin.contrasena" required placeholder=" Ingrese Contraseña">
-                            <ion-icon name="key" class="animated tada ion-margin-end" color="orange"></ion-icon>
+                            <ion-icon name="key" class="animated tada ion-margin-end" color="ocean"></ion-icon>
                           </ion-input>
                         </ion-item>
 
@@ -38,7 +38,7 @@
 
                 <ion-row>
                   <ion-col>
-                    <ion-button type="submit" mode="ios" color="orange" shape="round" class="animated-b flash"
+                    <ion-button type="submit" mode="ios" color="purple" shape="round" class="animated-b flash"
                       [disabled]="formulario.invalid" (click)="login()">
                       Login
                     </ion-button>
@@ -112,14 +112,14 @@
   <ion-toolbar color="transparent">
     <ion-row>
       <ion-col>
-        <ion-button shape="round" expand="full" mode="ios" size="small" fill="outline" color="orange"
+        <ion-button shape="round" expand="full" mode="ios" size="small" fill="outline" color="purple"
           (click)="mostrarRegistro()">
           Ingresar
         </ion-button>
       </ion-col>
 
       <ion-col>
-        <ion-button shape="round" expand="full" mode="ios" size="small" fill="outline" color="orange"
+        <ion-button shape="round" expand="full" mode="ios" size="small" fill="outline" color="purple"
           (click)="mostrarLogin()">
           Registrarme
         </ion-button>

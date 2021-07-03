@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, MenuController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Persona } from 'src/app/models/PersonaModel';
@@ -31,12 +31,15 @@ export class LoginPage {
   };
 
   constructor(private personaService: PersonaService,
-    private router: Router
-    /*  private storage: Storage, */
-  ) {
+              private router: Router,
+              private menuCtrl: MenuController) {
     this.personaLogin = new Persona();
     this.personaLogin.correo = null;
     this.personaLogin.contrasena = null
+  }
+
+  ionViewWillEnter(){
+    this.menuCtrl.enable(false);
   }
 
   ionViewDidEnter() {

@@ -6,8 +6,8 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-buttons slot="end" >
-      <ion-menu-button color="ocean" autoHide="true" menuId="primerMenu"></ion-menu-button> 
+    <ion-buttons slot="end">
+      <ion-menu-button color="ocean" autoHide="true" menuId="primerMenu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 
@@ -17,9 +17,9 @@
         <ion-label class="ion-text-capitalize">Cervezas</ion-label>
         <ion-icon size="large" name="beer"></ion-icon>
       </ion-segment-button>
-       
+
       <ion-segment-button value="licores" layout="icon-start">
-        <i  class="fas fa-2x fa-wine-bottle"></i>
+        <i class="fas fa-2x fa-wine-bottle"></i>
         <ion-label class="ion-text-capitalize">Licores</ion-label>
       </ion-segment-button>
 
@@ -30,25 +30,24 @@
     </ion-segment>
   </ion-toolbar>
   <ion-toolbar>
-    <app-search mode="ios" (textoFiltro)="buscarPro($event)"></app-search>
+    <ion-searchbar #search mode="ios" class="ion-margin-top color-search" placeholder="Buscar Producto"
+      (ionChange)="buscar($event)">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> 
+<ion-content [fullscreen]="true">
   <div [ngSwitch]="type">
     <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
-      <app-producto *ngFor="let item of listPro | filtro:textBuscar:'nombre'"
-      [product]="item"></app-producto>
+      <app-producto *ngFor="let item of listPro | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
     </div>
 
     <div *ngSwitchCase="'licores'" class="ion-margin-bottom">
-      <app-producto *ngFor="let item of listLic | filtro:textBuscar:'nombre'"
-      [product]="item"></app-producto>
+      <app-producto *ngFor="let item of listLic | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
     </div>
 
     <div *ngSwitchCase="'piqueos'" class="ion-margin-bottom">
-      <app-producto *ngFor="let item of listPiq | filtro:textBuscar:'nombre'"
-      [product]="item"></app-producto>
+      <app-producto *ngFor="let item of listPiq | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
     </div>
   </div>
 </ion-content>

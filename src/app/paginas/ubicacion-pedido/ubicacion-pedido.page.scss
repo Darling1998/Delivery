@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.titulo{
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.8em;
+    color: var(--ion-color-ocean);
+}
+
+/* .map{
+    z-index: -1;
+}
+ */
+ion-footer{
+    --background: transparent;
+    --ion-color-base: transparent  !important;
+     /* z-index: 3;  */
+    display: flex; 
+    justify-content: center;
+    width: 100% !important;
+    height: 15%;
+    ion-card{
+        width: 90vw;
+    }
+} 

@@ -9,8 +9,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    color: white;
-    background-color: limegreen;
+    color: var(--ion-color-dark);
+    background-color: var(--ion-color-success);
 }
 
 .etiqueta{
@@ -27,4 +27,8 @@
           --padding-start: 5px;
         }
     }    
+}
+
+ion-fab-bottom {
+    --border-color: var(--ion-color-bluesky) !important;
 }

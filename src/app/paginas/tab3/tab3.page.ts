@@ -1,3 +1,4 @@
+import { MenuController } from '@ionic/angular';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,7 +8,15 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(private menuCtrl:MenuController) {}
+
+  ionViewWillEnter(){
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewDidLeave(){
+   this.menuCtrl.enable(true);
+  }
 
   logOut(){
     //

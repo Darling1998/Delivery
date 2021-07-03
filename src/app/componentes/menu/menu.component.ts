@@ -28,8 +28,10 @@ export class MenuComponent implements OnInit {
       this.router.navigateByUrl('/login');
     } */
   }
-  ionViewDidLeave(){
-    this.menuCtrl.close('principal');
+
+
+  ionViewWillLeave(){
+    this.menuCtrl.toggle('principal');
     //this.menuCtrl.swipeGesture(false, 'principal');
   }
 

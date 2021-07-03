@@ -15,18 +15,16 @@
       <ion-input type="text" name="name" placeholder="Nombre o detalle de referencia" [(ngModel)]="name">
       </ion-input>
     </ion-item>
-    <ion-button expand="block" shape="round" (click)="addAddress()" color="ocean" class="btn">
-      Agregar
-    </ion-button>
+    <div class="ion-padding">
+      <ion-button class="ion-padding-start ion-padding-end" expand="block" mode="ios" shape="round" (click)="addAddress()" color="ocean" class="btn">
+        Agregar
+      </ion-button>
+    </div>
   </div>
 
 
   <ion-list>
     <ion-radio-group value="biff">
-      <!-- <ion-list-header>
-        <ion-label>Name</ion-label>
-      </ion-list-header> -->
-  
       <ion-item *ngFor="let item of listAddress">
         <ion-label>{{item.nombre}}</ion-label>
         <ion-radio color="ocean" slot="end" [value]="item.id"></ion-radio>
@@ -35,7 +33,7 @@
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button color="danger" (click)="dismiss()">
+    <ion-fab-button color="purple" (click)="dismiss()">
       <ion-icon name="close-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
