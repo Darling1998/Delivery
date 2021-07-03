@@ -1,24 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons (click)="dismiss()" slot="end">
-      <ion-button>
-        <ion-icon size="large" color="orange" name="close-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center">Nueva Dirección</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-item lines="none" color="transparent">
+    <ion-label class="ion-text-center ion-text-capitalize titulo"><b>Nueva Dirección</b></ion-label>
+  </ion-item>
+
   <ion-card>
     <div id='map' class="map" style='width: 400px; height: 300px;'></div>
   </ion-card>
 
   <form [formGroup]="dirForm">
     <ion-list lines="none">
-      <!-- <ion-item class="form-group">
-        <ion-label>Nombre:</ion-label>
-      </ion-item> -->
       <ion-item class="form-group">
         <ion-input type="text" class="form-control" name="nombre" [(ngModel)]="nombre" placeholder="Indica una referencia (casa, trabajo...)" required>
         </ion-input>
@@ -33,4 +23,10 @@
       </ion-col>
     </ion-row>
   </form>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger" (click)="dismiss()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

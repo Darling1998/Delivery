@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-item lines="none" color="transparent">
+    <p class="ion-text-center ion-text-capitalize titulo" color="orange"><b>Agrega o escoge una dirección</b></p>
+  </ion-item>
+  
+  <ion-item lines="none" color="transparent">
+    <button class="circulo" slot="start" (click)="getLocation()">
+      <ion-icon size="large" name="navigate-outline"></ion-icon>
+    </button>
+    <ion-label class="titulo">Ubicación Actual</ion-label>
+  </ion-item>
+
+  <div class="etiqueta ion-padding-end ion-padding-start">
+    <ion-item class="ion-margin-top ion-margin-bottom" [disabled]="inhabilitarInput">
+      <ion-input 
+        type="text" 
+        name="name"
+        placeholder="Nombre o detalle de referencia"
+        [(ngModel)]="name" required>
+      </ion-input>
+    </ion-item>
+  </div>
+
+  <ion-list>
+    <ion-item>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger" (click)="dismiss()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

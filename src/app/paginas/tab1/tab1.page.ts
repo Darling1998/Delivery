@@ -1,3 +1,5 @@
+import { ModalAddressPage } from './../modal-address/modal-address.page';
+import { ModalController } from '@ionic/angular';
 import { ProductosService } from './../../servicios/productos.service';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../interfaces/interfaces';
@@ -15,7 +17,7 @@ export class Tab1Page implements OnInit {
   listBag: Producto[]=[];
   textBuscar: string = "";
 
-  constructor(private proSer: ProductosService) { }
+  constructor(private proSer: ProductosService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.type = 'cervezas';
@@ -65,7 +67,12 @@ export class Tab1Page implements OnInit {
     this.textBuscar = event;
   }
 
-  abrirModalDirecciones(){
-
+  async abrirModalDirecciones(){
+    const modal = await this.modalCtrl.create({
+      component: ModalAddressPage,
+      backdropDismiss: true,
+      cssClass: 'options_modal',
+    });
+    return await modal.present();
   }
 }
