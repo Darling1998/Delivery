@@ -1,5 +1,5 @@
 import { ModalAddressPage } from './../modal-address/modal-address.page';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { ProductosService } from './../../servicios/productos.service';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../interfaces/interfaces';
@@ -17,13 +17,17 @@ export class Tab1Page implements OnInit {
   listBag: Producto[]=[];
   textBuscar: string = "";
 
-  constructor(private proSer: ProductosService, private modalCtrl: ModalController) { }
+  constructor(private proSer: ProductosService, private modalCtrl: ModalController, private menuCtrl: MenuController) { }
 
   ngOnInit() {
     this.type = 'cervezas';
     this.cargarCervezas();
   }
 
+  ionViewWillEnter(){
+    this.menuCtrl.swipeGesture(false, 'principal');
+  }
+  
   segmentChanged(ev: any) {
     this.listPro = [];
     //Carga la data con la categoria

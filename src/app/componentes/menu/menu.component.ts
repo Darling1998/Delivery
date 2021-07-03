@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Persona } from '../../models/PersonaModel';
 
 @Component({
@@ -14,7 +15,8 @@ export class MenuComponent implements OnInit {
   idRole: string = null;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private menuCtrl:MenuController
   ) { }
 
   ngOnInit() {
@@ -26,6 +28,11 @@ export class MenuComponent implements OnInit {
       this.router.navigateByUrl('/login');
     } */
   }
+  ionViewDidLeave(){
+    this.menuCtrl.close('principal');
+    //this.menuCtrl.swipeGesture(false, 'principal');
+  }
+
 
   cambioCheck() {
     this.darkMode = !this.darkMode;

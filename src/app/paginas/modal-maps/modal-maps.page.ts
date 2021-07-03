@@ -19,7 +19,7 @@ export class ModalMapsPage implements OnInit {
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/streets-v11';
 
-  constructor(private modalCtrl: ModalController, private fb: FormBuilder) { 
+  constructor(private modalCtrl:ModalController, private fb: FormBuilder) { 
     this.mapbox.accessToken = environment.mapbox.accessToken;
     this.createForm();
   }

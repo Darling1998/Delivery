@@ -13,6 +13,11 @@ export class ModalAddressPage implements OnInit {
   inhabilitarInput: boolean = true;
   name: string = "";
 
+  listAddress:any[]=[
+    {id: 1, nombre: "Mi casa", latitud:-2.2433979, longitud:-80.9318224},
+    {id: 2, nombre: "Mi oficina", latitud:-2.2433979, longitud:-80.9318224},
+  ];
+
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
@@ -32,6 +37,11 @@ export class ModalAddressPage implements OnInit {
     this.latitud = position.coords.latitude;
     this.longitud = position.coords.longitude;
     console.log(position)
+  }
+
+  addAddress(){
+    console.log({id:3, nombre: this.name, longitud: this.longitud, latitud: this.longitud})
+    this.listAddress.push({id:3, nombre: this.name, longitud: this.longitud, latitud: this.longitud});
   }
 
 }

@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'ubicacion-pedido',
     loadChildren: () => import('./paginas/ubicacion-pedido/ubicacion-pedido.module').then( m => m.UbicacionPedidoPageModule)
-  }
+  },
+  {
+    path: 'modal-address',
+    loadChildren: () => import('./paginas/modal-address/modal-address.module').then( m => m.ModalAddressPageModule)
+  },
 ];
 @NgModule({
   imports: [

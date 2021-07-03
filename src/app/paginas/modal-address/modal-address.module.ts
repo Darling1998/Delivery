@@ -1,6 +1,7 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -10,8 +11,10 @@ import { ModalAddressPage } from './modal-address.page';
 
 @NgModule({
   imports: [
+    BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     ModalAddressPageRoutingModule
   ],

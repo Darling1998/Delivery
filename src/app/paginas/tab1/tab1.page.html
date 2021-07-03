@@ -1,18 +1,18 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start" (click)="abrirModalDirecciones()">
-      <ion-button color="orange">
+      <ion-button color="ocean">
         <ion-icon name="chevron-down-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="end" >
-      <ion-menu-button color="orange" autoHide="true" menuId="primerMenu"></ion-menu-button> 
+      <ion-menu-button color="ocean" autoHide="true" menuId="primerMenu"></ion-menu-button> 
     </ion-buttons>
   </ion-toolbar>
 
   <ion-toolbar>
-    <ion-segment color="orange" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+    <ion-segment color="ocean" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="cervezas" layout="icon-start">
         <ion-label class="ion-text-capitalize">Cervezas</ion-label>
         <ion-icon size="large" name="beer"></ion-icon>
