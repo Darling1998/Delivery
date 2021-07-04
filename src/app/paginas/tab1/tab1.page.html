@@ -14,18 +14,18 @@
   <ion-toolbar>
     <ion-segment color="ocean" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="cervezas" layout="icon-start">
-        <ion-label class="ion-text-capitalize">Cervezas</ion-label>
+        <ion-label class="ion-text-capitalize segmentos">Cervezas</ion-label>
         <ion-icon size="large" name="beer"></ion-icon>
       </ion-segment-button>
 
       <ion-segment-button value="licores" layout="icon-start">
         <i class="fas fa-2x fa-wine-bottle"></i>
-        <ion-label class="ion-text-capitalize">Licores</ion-label>
+        <ion-label class="ion-text-capitalize segmentos">Licores</ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="piqueos" layout="icon-start">
         <i class="fab fa-2x fa-gulp"></i>
-        <ion-label class="ion-text-capitalize">Piqueos</ion-label>
+        <ion-label class="ion-text-capitalize segmentos">Piqueos</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>

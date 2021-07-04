@@ -8,28 +8,28 @@
     </div>
 
     <ion-list class="menu-items">
-      <ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
         <ion-item routerLink="/tabs/tab1">
           <ion-icon color="ocean" name="home-outline"></ion-icon>
           <ion-label>Home</ion-label>
         </ion-item>
       </ion-menu-toggle>
       
-      <ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
         <ion-item routerLink="/tabs/tab3">
           <ion-icon color="ocean" name="person-circle-outline"></ion-icon>
           <ion-label>Mi Perfil</ion-label>
         </ion-item>
       </ion-menu-toggle>
      
-      <ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
         <ion-item routerLink="/mis-ubicaciones">
           <ion-icon  color="ocean" name="map-outline"></ion-icon>
           <ion-label>Mis Direcciones</ion-label>
         </ion-item>
       </ion-menu-toggle>
       
-      <ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
         <ion-item routerLink="/ubicacion-pedido">
           <ion-icon  color="ocean" name="location-outline"></ion-icon>
           <ion-label>Ubicación de Pedido</ion-label>
@@ -42,7 +42,7 @@
         <ion-toggle color="ocean" slot="end" [ngModel]="darkMode" (ionChange)="cambioCheck()"></ion-toggle>
       </ion-item>
 
-      <ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
         <ion-item routerLink="/about">
           <ion-icon color="ocean" name="information-outline"></ion-icon>
           <ion-label>Acerca de.</ion-label>

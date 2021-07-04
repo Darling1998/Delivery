@@ -24,7 +24,7 @@ export class UbicacionPedidoPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.menuCtrl.enable(false);
+    this.menuCtrl.swipeGesture(false, 'primerMenu');
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
@@ -32,10 +32,6 @@ export class UbicacionPedidoPage implements OnInit {
       center: [this.lng, this.lat]
     });
     this.map.addControl(new mapboxgl.NavigationControl());
-  }
-
-  ionViewDidLeave(){
-   this.menuCtrl.enable(true);
   }
 
   ionViewDidEnter(){

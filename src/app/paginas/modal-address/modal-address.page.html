@@ -1,13 +1,13 @@
 <ion-content>
-  <ion-item lines="none" color="transparent">
-    <p class="ion-text-center ion-text-capitalize titulo" color="ocean"><b>Agrega o escoge una dirección</b></p>
+  <ion-item lines="none" color="transparent" class="ion-margin-top ion-margin-bottom">
+    <ion-label class="ion-text-capitalize titulo">Agrega o escoge una dirección</ion-label>
   </ion-item>
 
   <ion-item lines="none" color="transparent">
     <button class="circulo" slot="start" (click)="getLocation()">
       <ion-icon size="large" name="navigate-outline"></ion-icon>
     </button>
-    <ion-label class="titulo">Ubicación Actual</ion-label>
+    <ion-label color="dark" class="locate">Ubicación Actual</ion-label>
   </ion-item>
 
   <div class="etiqueta ion-padding-end ion-padding-start">
@@ -23,9 +23,9 @@
   </div>
 
 
-  <ion-list>
-    <ion-radio-group value="biff">
-      <ion-item *ngFor="let item of listAddress">
+  <ion-list lines="none">
+    <ion-radio-group color="bluesky">
+      <ion-item *ngFor="let item of listAddress" color="transparent">
         <ion-label>{{item.nombre}}</ion-label>
         <ion-radio color="ocean" slot="end" [value]="item.id"></ion-radio>
       </ion-item>

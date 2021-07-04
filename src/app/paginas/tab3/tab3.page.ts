@@ -11,11 +11,7 @@ export class Tab3Page {
   constructor(private menuCtrl:MenuController) {}
 
   ionViewWillEnter(){
-    this.menuCtrl.enable(false);
-  }
-
-  ionViewDidLeave(){
-   this.menuCtrl.enable(true);
+    this.menuCtrl.swipeGesture(false, "primerMenu");
   }
 
   logOut(){

@@ -39,7 +39,7 @@ export class LoginPage {
   }
 
   ionViewWillEnter(){
-    this.menuCtrl.enable(false);
+    this.menuCtrl.swipeGesture(false, "primerMenu");
   }
 
   ionViewDidEnter() {

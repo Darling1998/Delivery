@@ -1,9 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>about</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="transparent">
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" defaultHref="/tabs"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <ion-item lines="none" color="transparent">
+    <ion-label class="ion-margin-top titulo" color="ocean">Acerca <br>De.</ion-label>
+  </ion-item>
 </ion-content>
