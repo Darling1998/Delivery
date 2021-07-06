@@ -19,41 +19,75 @@
         <ion-col size="3">
           <div>
             <ion-avatar slot="start">
-              <ion-img src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg"></ion-img>
+              <ion-img src="assets/avatars/{{img}}"></ion-img>
             </ion-avatar>
           </div>
         </ion-col>
         <ion-col size="9" class="ion-justify-end">
           <div class="names">
-            <ion-label color="ocean" class="fullname">Nombres y Apellidos</ion-label><br>
-            <ion-label class="name-user">@NombreUsuario</ion-label>
+            <ion-label color="ocean" class="fullname">{{informacion['nombre']}} {{informacion['apellido']}}</ion-label><br>
+            <ion-label class="name-user">@{{informacion['nombre']}}{{informacion['apellido']}}{{informacion['idPersona']}}</ion-label>
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-  <div>
-    <ion-card>
-      <ion-card-content>
-        <ion-item-group>
-          <ion-icon slot="start" color="danger" class="ion-margin-end" name="mail-outline"></ion-icon>
-          <b>Correo:</b>
-          <span style="margin-left: 5px;">user@ionic.com</span>
-        </ion-item-group>
 
-        <ion-item-group>
-          <ion-icon slot="start" color="primary" class="ion-margin-end" name="calendar-outline"></ion-icon>
-          <b>Edad:</b>
-          <span style="margin-left: 5px;">23 años</span>
-        </ion-item-group>
+  <ion-segment color="ocean" [(ngModel)]="type">
+    <ion-segment-button value="informacion">
+      <ion-label>Información</ion-label>
+      <ion-icon name="information-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="pedidos" >
+      <ion-label>Mis Pedidos</ion-label>
+      <ion-icon name="bag-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="map">
+      <ion-label>Mis Direcciones</ion-label>
+      <ion-icon name="map-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
 
-        <ion-item-group>
-          <ion-icon slot="start" color="success" class="ion-margin-end" name="call-outline"></ion-icon>
-          <b>Celular:</b>
-          <span style="margin-left: 5px;">0968556635</span>
-        </ion-item-group>
-      </ion-card-content>
-    </ion-card>
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="'informacion'" class="ion-margin-bottom">
+      <div class="ion-margin-top">
+        <ion-card>
+          <ion-card-content>
+            <ion-item-group>
+              <ion-icon slot="start" color="danger" class="ion-margin-end" name="mail-outline"></ion-icon>
+              <b>Correo:</b>
+              <span style="margin-left: 5px;">{{informacion['correo']}}</span>
+            </ion-item-group>
+    
+            <ion-item-group>
+              <ion-icon slot="start" color="primary" class="ion-margin-end" name="calendar-outline"></ion-icon>
+              <b>Edad:</b>
+              <span style="margin-left: 5px;">23 años</span>
+            </ion-item-group>
+    
+            <ion-item-group>
+              <ion-icon slot="start" color="success" class="ion-margin-end" name="call-outline"></ion-icon>
+              <b>Celular:</b>
+              <span style="margin-left: 5px;">{{informacion['telefono']}}</span>
+            </ion-item-group>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-row class="ion-justify-content-end">
+          <ion-col size="auto">
+            <ion-button mode="ios" shape="round" color="tertiary" (click)="irEditar()"><ion-label>Editar</ion-label></ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'pedidos'" class="ion-margin-bottom">
+      <app-mis-pedidos></app-mis-pedidos>
+    </div>
+
+    <div *ngSwitchCase="'piqueos'" class="ion-margin-bottom">
+      
+    </div>
   </div>
 
 </ion-content>

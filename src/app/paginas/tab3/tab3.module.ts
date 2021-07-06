@@ -1,3 +1,5 @@
+import { MisPedidosModule } from './../../componentes/mis-pedidos/mis-pedidos.module';
+import { AvatarSelectorModule } from './../../componentes/avatar-selector/avatar-selector.module';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -12,6 +14,8 @@ import { Tab3PageRoutingModule } from './tab3-routing.module';
   imports: [
     IonicModule,
     CommonModule,
+    AvatarSelectorModule,
+    MisPedidosModule,
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule

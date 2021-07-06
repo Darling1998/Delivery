@@ -1,23 +1,22 @@
 import { AvatarSelectorModule } from './../../componentes/avatar-selector/avatar-selector.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { UpdateProfilePageRoutingModule } from './update-profile-routing.module';
 
-import { LoginPage } from './login.page';
+import { UpdateProfilePage } from './update-profile.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AvatarSelectorModule,
-    ReactiveFormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    AvatarSelectorModule,
+    UpdateProfilePageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [UpdateProfilePage]
 })
-export class LoginPageModule {}
+export class UpdateProfilePageModule {}

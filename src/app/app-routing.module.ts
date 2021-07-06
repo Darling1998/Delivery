@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'modal-address',
     loadChildren: () => import('./paginas/modal-address/modal-address.module').then( m => m.ModalAddressPageModule)
   },
+  {
+    path: 'update-profile',
+    loadChildren: () => import('./paginas/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
 ];
 @NgModule({
   imports: [

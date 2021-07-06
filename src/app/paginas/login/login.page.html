@@ -14,18 +14,18 @@
                 <ion-row>
                   <ion-col>
                     <div class="card-form">
-                      <ion-card mode="ios" class="class-container">
-                        <p class="tag">Ingrese sus credenciales para continuar</p>
+                      <ion-card mode="ios" class="class-container ion-padding">
+                        <h3 class="tag">Ingrese sus credenciales para continuar</h3>
                         <ion-item lines="none" color="transparent">
-                          <ion-input name="email" type="email" [(ngModel)]="personaLogin.correo"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder=" Ingrese Email">
+                          <ion-input name="correo" type="correo" [(ngModel)]="personaLogin.correo"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder=" Ingrese correo">
                             <ion-icon name="person" class="animated tada ion-margin-end" color="ocean"></ion-icon>
                           </ion-input>
                         </ion-item>
 
                         <ion-item lines="none" color="transparent">
-                          <ion-input name="password" type='password'
-                            [(ngModel)]="personaLogin.contrasena" required placeholder=" Ingrese Contraseña">
+                          <ion-input name="password" type='password' [(ngModel)]="personaLogin.contrasena" required
+                            placeholder=" Ingrese Contraseña">
                             <ion-icon name="key" class="animated tada ion-margin-end" color="ocean"></ion-icon>
                           </ion-input>
                         </ion-item>
@@ -37,7 +37,7 @@
                 </ion-row>
 
                 <ion-row>
-                  <ion-col>
+                  <ion-col class="ion-margin-bottom">
                     <ion-button type="submit" mode="ios" color="purple" shape="round" class="animated-b flash"
                       [disabled]="formulario.invalid" (click)="login()">
                       Login
@@ -53,13 +53,15 @@
     </ion-slide>
 
     <ion-slide>
-      <ion-grid>
+      <ion-grid fixed>
         <ion-row>
           <ion-col>
             <h1 class="titulo">Registro</h1>
           </ion-col>
         </ion-row>
-        <form #fRegistro="ngForm">
+
+        <app-avatar-selector (avatarSel)="registerUser.avatar =$event"></app-avatar-selector>
+        <form (ngSubmit)="registro(fRegistro)" #fRegistro="ngForm">
           <ion-row>
             <ion-col>
               <ion-list>
@@ -81,9 +83,10 @@
                   </ion-input>
                 </ion-item>
 
+
                 <ion-item>
-                  <ion-label position="floating">Email</ion-label>
-                  <ion-input name="email" type="email" [(ngModel)]="registerUser.email"
+                  <ion-label position="floating">Correo</ion-label>
+                  <ion-input name="correo" type="correo" [(ngModel)]="registerUser.correo"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></ion-input>
                 </ion-item>
                 <ion-item>
@@ -96,7 +99,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-button type="submit" mode="ios" color="orange" shape="round">
+              <ion-button type="submit" mode="ios" color="purple" shape="round">
                 Crear usuario
               </ion-button>
             </ion-col>

@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="ion-padding-top" *ngIf="this.list.length === 0">
+  <div class="emptybag" *ngIf="this.list.length === 0">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
         <ion-col size="auto" class="ion-padding">
@@ -33,7 +33,7 @@
         <ion-col class="ion-padding-top">
           <div class="ion-text-center">
             <ion-text color="primary">
-              Navegue por las categorías, o busque su producto.
+              Navegue por las categorías, busque su producto y añadalo a la cesta.
             </ion-text>
           </div>
         </ion-col>

@@ -1,8 +1,8 @@
+import { ILogin } from './../../interfaces/interfaces';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, MenuController } from '@ionic/angular';
+import { IonSlides, MenuController, NavController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Persona } from 'src/app/models/PersonaModel';
 import { PersonaService } from 'src/app/servicios/persona.service';
 
 @Component({
@@ -11,11 +11,13 @@ import { PersonaService } from 'src/app/servicios/persona.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  personaLogin: Persona;
-
+  personaLogin: ILogin = {correo:"", contrasena:""};
+  
   @ViewChild('slidePrincipal') slides: IonSlides;
 
+
   loginUser = {
+    id:'',
     email: '',
     password: ''
   };
@@ -23,19 +25,19 @@ export class LoginPage {
   registerUser: any = {
     nombre: '',
     apellido: '',
-    cedula: '',
     telefono: '',
-    direccion: '',
-    email: '',
+    correo: '',
     password: '',
+    avatar:'',
   };
+
+
 
   constructor(private personaService: PersonaService,
               private router: Router,
-              private menuCtrl: MenuController) {
-    this.personaLogin = new Persona();
-    this.personaLogin.correo = null;
-    this.personaLogin.contrasena = null
+              private menuCtrl: MenuController,
+              private toastCtrl:ToastController,
+              public navCtrl:NavController) {
   }
 
   ionViewWillEnter(){
@@ -48,39 +50,23 @@ export class LoginPage {
 
   login() {
     if (this.personaLogin.correo == null || this.personaLogin.contrasena == null) {
-
-    } else {
-      //console.log(this.usuarioLogin);
-      this.logueando();
-    }
-  }
-
-  logueando() {
-    this.personaService.iniciarSeccion(this.personaLogin)
-      .subscribe((data: any) => {
-
-        if (data == null) {
-          //this.generalService.error();
-        } else {
-          let personaSeccion = data;
-
-          //localStorage.setItem('personaSeccion', JSON.stringify(personaSeccion));
-
-
-          if (personaSeccion.idRole == '3') {
-            this.router.navigateByUrl('/tabs/tab1');
-            console.log("Redireccionar a pagina principal");
-          }/* else 
-          if(personaSeccion.id_rol == '2'){
-            this.router.navigateByUrl('/menu/secretaria');
-            console.log("Redireccionar a menu/Secretaria");
-          }else 
-          if(personaSeccion.id_rol == '3'){
-            this.router.navigateByUrl('/menu/voluntario');
-            console.log("Redireccionar a menu/Voluntario");
-          } */
+      return;
+    } else {      //console.log(this.usuarioLogin);
+      this.personaService.iniciarSeccion(this.personaLogin)
+      .subscribe(data => {
+        if(data['status'] == "error"){
+          this.presentToast(data['message']);
+        }else{
+          this.personaLogin.correo = "";
+          this.personaLogin.contrasena = "";
+        
+          let obj = JSON.stringify(data);
+          let obj2 = obj.replace("[","").replace("]","");
+          localStorage.setItem('info', obj2);
+          this.router.navigate(['/tabs']);
         }
       });
+    }
   }
 
   mostrarRegistro() {
@@ -93,5 +79,37 @@ export class LoginPage {
     this.slides.lockSwipes(false);
     this.slides.slideTo(1);
     this.slides.lockSwipes(true);
+  }
+
+  registro(fRegistro:NgForm){
+
+    if(fRegistro.valid){
+      this.personaService.enviarRegistro(this.registerUser).subscribe(res=>
+        {
+        console.log(res);
+          if(res.success= true){
+            localStorage.setItem('info', JSON.stringify(this.registerUser));
+            this.presentToast(res.msg);
+            
+            this.navCtrl.navigateRoot( '/tabs/tab1', { animated: true } );
+          }else{
+            //loader.dismiss();
+          // this.disabledButton=false
+            this.presentToast("Ha ocurrido un error al Registrar");
+          } 
+       });
+    }else{
+
+    }
+   
+  }
+
+  async presentToast(message){
+    const toast = await this.toastCtrl.create({
+      message,
+      duration:1500
+    });
+
+    toast.present();
   }
 }

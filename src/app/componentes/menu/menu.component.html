@@ -49,10 +49,12 @@
         </ion-item>
       </ion-menu-toggle>
       
-      <ion-item (click)="cerrarCesion()">
-        <ion-icon color="ocean" name="lock-closed-outline"></ion-icon>
-        <ion-label>Cerrar Cesión</ion-label>
-      </ion-item>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item (click)="cerrarCesion()">
+          <ion-icon color="ocean" name="lock-closed-outline"></ion-icon>
+          <ion-label>Cerrar Cesión</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
 
     </ion-list>
   </ion-content>

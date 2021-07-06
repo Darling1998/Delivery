@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
-import { Persona } from '../../models/PersonaModel';
+import { MenuController, AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-menu',
@@ -11,27 +11,21 @@ import { Persona } from '../../models/PersonaModel';
 export class MenuComponent implements OnInit {
 
   darkMode: boolean = false;
-  private personaSeccion: Persona;
   idRole: string = null;
 
   constructor(
     private router: Router,
-    private menuCtrl:MenuController
+    private menuCtrl: MenuController,
+    private alertCtrl: AlertController 
   ) { }
 
   ngOnInit() {
-    /* this.personaSeccion= JSON.parse(localStorage.getItem('personaSeccion'));
 
-    if(this.personaSeccion){
-      this.idRole = this.personaSeccion.idRole;
-    }else{
-      this.router.navigateByUrl('/login');
-    } */
   }
 
 
   ionViewWillLeave(){
-    this.menuCtrl.toggle('principal');
+    //this.menuCtrl.toggle('principal');
     //this.menuCtrl.swipeGesture(false, 'principal');
   }
 
@@ -42,12 +36,23 @@ export class MenuComponent implements OnInit {
   }
 
   cerrarCesion() {
-    let usuarioActual = JSON.parse(localStorage.getItem('personaSeccion'));
-
-    if (usuarioActual) {
-      localStorage.clear();
-      location.href = '/login';
-      this.router.dispose();
+    if(JSON.parse(localStorage.getItem('info')) != null){
+      this.alertCtrl.create({ 
+        header:"Cerrar Sesión",
+        message:"¿Esta Seguro de Cerrar Sesión?",
+        buttons:[
+          {
+            text:"😥 Sí",
+            handler:()=>{
+              //localStorage.setItem("info", "");
+              localStorage.clear();
+              location.href = '/login';
+              this.router.dispose();
+            }
+          },
+          {text:"😎 No"}
+        ]
+      }).then(alertEl=>alertEl.present());
     }
   }
 

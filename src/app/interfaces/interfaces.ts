@@ -11,3 +11,13 @@ export interface IDetallePedido{
     producto: Producto;
     total:    number;
 }
+
+export interface Avatar{
+    img:string,
+    seleccionado:boolean
+}
+
+export interface ILogin {
+    correo:     string;
+    contrasena: string;
+}
