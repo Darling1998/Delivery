@@ -24,10 +24,10 @@
 
 
   <ion-list lines="none">
-    <ion-radio-group color="bluesky">
-      <ion-item *ngFor="let item of listAddress" color="transparent">
-        <ion-label>{{item.nombre}}</ion-label>
-        <ion-radio color="ocean" slot="end" [value]="item.id"></ion-radio>
+    <ion-radio-group color="bluesky" (ionChange)="seleccionRadio($event)">
+      <ion-item *ngFor="let item of direcciones" color="transparent">
+        <ion-label>{{item.detalle}}</ion-label>
+        <ion-radio color="ocean" slot="end" [value]="item.idDireccion"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>

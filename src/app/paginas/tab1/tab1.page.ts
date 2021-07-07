@@ -1,3 +1,5 @@
+import { IDirecciones } from './../../interfaces/interfaces';
+import { DireccionesService } from './../../servicios/direcciones.service';
 import { ModalAddressPage } from './../modal-address/modal-address.page';
 import { IonSearchbar, MenuController, ModalController } from '@ionic/angular';
 import { ProductosService } from './../../servicios/productos.service';
@@ -16,13 +18,21 @@ export class Tab1Page implements OnInit {
   listPiq: Producto[]=[];
   listBag: Producto[]=[];
   textBuscar: string = "";
+  listDirecciones: IDirecciones[]=[]; //Listado de direcciones generales
+  listSelecionado: IDirecciones[]=[]; //muestra la direccion escogida 
+  id_cliente: number;
   @ViewChild(IonSearchbar) searchbar: IonSearchbar;
 
-  constructor(private proSer: ProductosService, private modalCtrl: ModalController, private menuCtrl: MenuController) { }
+  constructor(private proSer: ProductosService, 
+              private modalCtrl: ModalController, 
+              private menuCtrl: MenuController,
+              private dirSer: DireccionesService) { }
 
   ngOnInit() {
     this.type = 'cervezas';
+    this.id_cliente = JSON.parse(localStorage.getItem('info'))['idCliente'];
     this.cargarCervezas();
+    this.cargarDirecciones();
   }
 
   ionViewWillEnter(){
@@ -44,6 +54,15 @@ export class Tab1Page implements OnInit {
     } else{
       this.cargarPiqueos();
     }
+  }
+
+  cargarDirecciones(){
+    this.dirSer.getDireccionesDB(this.id_cliente).subscribe(
+      data => {
+        console.log(data);
+        this.listDirecciones = data;
+      }
+    );
   }
 
   cargarCervezas(){
@@ -73,9 +92,21 @@ export class Tab1Page implements OnInit {
   async abrirModalDirecciones(){
     const modal = await this.modalCtrl.create({
       component: ModalAddressPage,
+      componentProps: {
+        direcciones: this.listDirecciones,
+        id_cli: this.id_cliente
+      },
       backdropDismiss: true,
-      cssClass: 'options_modal',
+      cssClass: 'options_modal'
     });
-    return await modal.present();
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+  
+    console.log(data.idRadio)
+    this.listDirecciones = data.listado;
+    this.dirSer.getDirrecionSeleccionda(this.id_cliente, data.idRadio).subscribe(
+      data => { this.listSelecionado = data; }
+    )
   }
 }

@@ -1,5 +1,6 @@
+import { DireccionesService } from './../../servicios/direcciones.service';
 import { ModalController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
@@ -12,20 +13,20 @@ export class ModalAddressPage implements OnInit {
   longitud: number = 0;
   inhabilitarInput: boolean = true;
   name: string = "";
+  @Input() direcciones;
+  @Input() id_cli;
+  idSeleccionado: number;
 
-  listAddress:any[]=[
-    {id: 1, nombre: "Mi casa", latitud:-2.2433979, longitud:-80.9318224},
-    {id: 2, nombre: "Mi oficina", latitud:-2.2433979, longitud:-80.9318224},
-  ];
-
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private dirSer: DireccionesService) { }
 
   ngOnInit() {
+    console.log(this.direcciones, this.id_cli);
   }
 
   dismiss() {
     this.modalCtrl.dismiss({
-      'dismissed': true
+      listado: this.direcciones,
+      idRadio: this.idSeleccionado
     });
   }
 
@@ -36,12 +37,32 @@ export class ModalAddressPage implements OnInit {
     }
     this.latitud = position.coords.latitude;
     this.longitud = position.coords.longitude;
-    console.log(position)
+    console.log(position);
   }
 
   addAddress(){
-    console.log({id:3, nombre: this.name, longitud: this.longitud, latitud: this.longitud})
-    this.listAddress.push({id:3, nombre: this.name, longitud: this.longitud, latitud: this.longitud});
+    //insert a la bd
+    const dir = { idCliente: this.id_cli, latitud: this.latitud, longitud: this.longitud, detalle: this.name }
+    console.log(dir);
+    
+    this.dirSer.createDireccion(dir).subscribe(
+      data => {
+        if(data['status'] == "success"){
+          this.direcciones = [];
+          this.name = "";
+          this.dirSer.getDireccionesDB(this.id_cli).subscribe(
+            data => {
+              this.direcciones = data;
+            }
+          )
+        }
+      }
+    )
+  }
+
+  seleccionRadio(event){
+    this.idSeleccionado = event.detail.value;
+    console.log(event);
   }
 
 }

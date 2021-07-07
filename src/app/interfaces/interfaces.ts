@@ -21,3 +21,10 @@ export interface ILogin {
     correo:     string;
     contrasena: string;
 }
+
+export interface IDirecciones {
+    idDireccion: number;
+    latitud:     number;
+    longitud:    number;
+    detalle:     string;
+}
