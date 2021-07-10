@@ -1,6 +1,3 @@
-import { IDirecciones } from './../../interfaces/interfaces';
-import { DireccionesService } from './../../servicios/direcciones.service';
-import { ModalAddressPage } from './../modal-address/modal-address.page';
 import { IonSearchbar, MenuController, ModalController } from '@ionic/angular';
 import { ProductosService } from './../../servicios/productos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -17,22 +14,15 @@ export class Tab1Page implements OnInit {
   listLic: Producto[]=[];
   listPiq: Producto[]=[];
   listBag: Producto[]=[];
-  textBuscar: string = "";
-  listDirecciones: IDirecciones[]=[]; //Listado de direcciones generales
-  listSelecionado: IDirecciones[]=[]; //muestra la direccion escogida 
-  id_cliente: number;
+  textBuscar: string = ""; 
   @ViewChild(IonSearchbar) searchbar: IonSearchbar;
 
-  constructor(private proSer: ProductosService, 
-              private modalCtrl: ModalController, 
-              private menuCtrl: MenuController,
-              private dirSer: DireccionesService) { }
+  constructor(private proSer: ProductosService,  
+              private menuCtrl: MenuController) { }
 
   ngOnInit() {
     this.type = 'cervezas';
-    this.id_cliente = JSON.parse(localStorage.getItem('info'))['idCliente'];
     this.cargarCervezas();
-    this.cargarDirecciones();
   }
 
   ionViewWillEnter(){
@@ -56,57 +46,21 @@ export class Tab1Page implements OnInit {
     }
   }
 
-  cargarDirecciones(){
-    this.dirSer.getDireccionesDB(this.id_cliente).subscribe(
-      data => {
-        console.log(data);
-        this.listDirecciones = data;
-      }
-    );
-  }
-
   cargarCervezas(){
     this.proSer.getCervezas().subscribe(
-      data => {
-        this.listPro = data;
-      }
+      data => { this.listPro = data; }
     );
   }
 
   cargarLicores(){
     this.proSer.getLicores().subscribe(
-      data => {
-        this.listLic = data;
-      }
+      data => { this.listLic = data; }
     );
   }
 
   cargarPiqueos(){
     this.proSer.getPiqueos().subscribe(
-      data => {
-        this.listPiq = data;
-      }
+      data => { this.listPiq = data; }
     );
-  }
-
-  async abrirModalDirecciones(){
-    const modal = await this.modalCtrl.create({
-      component: ModalAddressPage,
-      componentProps: {
-        direcciones: this.listDirecciones,
-        id_cli: this.id_cliente
-      },
-      backdropDismiss: true,
-      cssClass: 'options_modal'
-    });
-    await modal.present();
-
-    const { data } = await modal.onDidDismiss();
-  
-    console.log(data.idRadio)
-    this.listDirecciones = data.listado;
-    this.dirSer.getDirrecionSeleccionda(this.id_cliente, data.idRadio).subscribe(
-      data => { this.listSelecionado = data; }
-    )
   }
 }

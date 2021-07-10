@@ -1,0 +1,13 @@
+<ion-buttons slot="start" (click)="abrirModalDirecciones()">
+  <ion-button color="ocean">
+    <div *ngIf="listSelecionado.length > 0; else templateDir">
+      <span class="ion-text-capitalize">{{listSelecionado[0].detalle}}</span>
+    </div>
+    
+    <ng-template #templateDir>
+      <span class="ion-text-capitalize">Escoge Una Dirección</span>
+    </ng-template>
+    
+    <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
+  </ion-button>
+</ion-buttons>

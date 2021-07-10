@@ -11,17 +11,25 @@
   </ion-item>
 
   <div class="etiqueta ion-padding-end ion-padding-start">
-    <ion-item class="ion-margin-top ion-margin-bottom" [disabled]="inhabilitarInput">
-      <ion-input type="text" name="name" placeholder="Nombre o detalle de referencia" [(ngModel)]="name">
-      </ion-input>
-    </ion-item>
-    <div class="ion-padding">
-      <ion-button class="ion-padding-start ion-padding-end" expand="block" mode="ios" shape="round" (click)="addAddress()" color="ocean" class="btn">
-        Agregar
-      </ion-button>
-    </div>
-  </div>
+    <form #formulario="ngForm" (ngSubmit)="addAddress()">
+      <ion-item class="ion-margin-top ion-margin-bottom" [disabled]="inhabilitarInput">
+        <ion-input type="text" name="name" placeholder="Nombre o detalle de referencia" #nombre="ngModel" [(ngModel)]="name" required>
+        </ion-input>
+      </ion-item>
+      <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors?.required">
+          <ion-note color="danger">El nombre es requerido.</ion-note>
+        </div>
+      </div>
 
+      <div class="ion-padding">
+        <ion-button type="subtmit" class="ion-padding-start ion-padding-end" expand="block" mode="ios" shape="round"
+          [disabled]="formulario.invalid" color="ocean" class="btn">
+          Agregar
+        </ion-button>
+      </div>
+    </form>
+  </div>
 
   <ion-list lines="none">
     <ion-radio-group color="bluesky" (ionChange)="seleccionRadio($event)">

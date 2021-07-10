@@ -15,7 +15,7 @@ export class ModalAddressPage implements OnInit {
   name: string = "";
   @Input() direcciones;
   @Input() id_cli;
-  idSeleccionado: number;
+  idSeleccionado: number = null;
 
   constructor(private modalCtrl: ModalController, private dirSer: DireccionesService) { }
 
@@ -25,7 +25,6 @@ export class ModalAddressPage implements OnInit {
 
   dismiss() {
     this.modalCtrl.dismiss({
-      listado: this.direcciones,
       idRadio: this.idSeleccionado
     });
   }
@@ -41,8 +40,8 @@ export class ModalAddressPage implements OnInit {
   }
 
   addAddress(){
-    //insert a la bd
-    const dir = { idCliente: this.id_cli, latitud: this.latitud, longitud: this.longitud, detalle: this.name }
+    //insert en la bd
+    const dir = { idCliente: this.id_cli, latitud: this.latitud, longitud: this.longitud, detalle: this.name };
     console.log(dir);
     
     this.dirSer.createDireccion(dir).subscribe(
@@ -51,18 +50,16 @@ export class ModalAddressPage implements OnInit {
           this.direcciones = [];
           this.name = "";
           this.dirSer.getDireccionesDB(this.id_cli).subscribe(
-            data => {
-              this.direcciones = data;
-            }
-          )
+            data => { this.direcciones = data; }
+          );
         }
       }
-    )
+    );
   }
 
   seleccionRadio(event){
     this.idSeleccionado = event.detail.value;
-    console.log(event);
+    //console.log(event);
   }
 
 }

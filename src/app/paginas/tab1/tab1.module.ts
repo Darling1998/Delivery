@@ -1,3 +1,4 @@
+import { DireccionesModule } from './../../componentes/direcciones/direcciones.module';
 import { ProductoModule } from './../../componentes/producto/producto.module';
 import { PipesModule } from './../../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
@@ -15,7 +16,8 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     FormsModule,
     PipesModule,
     Tab1PageRoutingModule,
-    ProductoModule
+    ProductoModule,
+    DireccionesModule
   ],
   declarations: [Tab1Page]
 })
