@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: 'update-profile',
     loadChildren: () => import('./paginas/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
-  },
+  }
 ];
 @NgModule({
   imports: [

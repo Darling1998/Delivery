@@ -8,3 +8,13 @@
 .color-search{
     --icon-color: var(--ion-color-ocean);
 }
+
+ion-card{
+    border-radius: 25px;
+    border: 2px solid var(--ion-color-purple);
+    background-color: white;
+    ion-card-content{
+        font-size: 16px;
+        color: var(--ion-color-purple) !important;
+    }
+}

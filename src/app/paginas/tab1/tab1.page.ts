@@ -1,3 +1,5 @@
+import { IPedidos } from './../../interfaces/interfaces';
+import { PedidosService } from './../../servicios/pedidos.service';
 import { IonSearchbar, MenuController, ModalController } from '@ionic/angular';
 import { ProductosService } from './../../servicios/productos.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -14,15 +16,37 @@ export class Tab1Page implements OnInit {
   listLic: Producto[]=[];
   listPiq: Producto[]=[];
   listBag: Producto[]=[];
-  textBuscar: string = ""; 
+  textBuscar: string = "";
+  listPedidos: IPedidos[] = [];
+
   @ViewChild(IonSearchbar) searchbar: IonSearchbar;
+  roleId: number = 0;
 
   constructor(private proSer: ProductosService,  
-              private menuCtrl: MenuController) { }
+              private menuCtrl: MenuController,
+              private serPedidos: PedidosService) { }
 
   ngOnInit() {
+    this.loadId();
     this.type = 'cervezas';
     this.cargarCervezas();
+  }
+
+  cargarPedidos(){
+    this.serPedidos.getPedidos().subscribe(
+      data => { this.listPedidos = data; console.log(this.listPedidos); }
+    );
+  }
+
+  calcularTotal(subtotal, costo_envio){
+    return Number(subtotal) + Number(costo_envio);
+  }
+
+  loadId(){
+    this.roleId = JSON.parse(localStorage.getItem("info")).idRole;
+    if (this.roleId == 4){
+      this.cargarPedidos();
+    }
   }
 
   ionViewWillEnter(){

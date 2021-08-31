@@ -1,5 +1,5 @@
 import { ParametersService } from './../../servicios/parameters.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -7,12 +7,17 @@ import { Subscription } from 'rxjs';
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
+export class TabsPage implements OnInit {
   numProductos: number = 0;
   subscription: Subscription;
+  userId: number = 0;
 
   constructor(private totPedido: ParametersService) {
     this.totalPedido();
+  }
+  
+  ngOnInit(){
+    this.loadID();
   }
 
   ngOnDestroy() {
@@ -26,5 +31,11 @@ export class TabsPage {
         this.numProductos = data.length;
       }
     );
+  }
+
+  loadID(){
+   let obj = JSON.parse(localStorage.getItem("info"));
+   this.userId = obj.idRole;
+   console.log();
   }
 }

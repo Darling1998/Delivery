@@ -28,3 +28,18 @@ export interface IDirecciones {
     longitud:    number;
     detalle:     string;
 }
+
+export interface IPedidos {
+    apellido: string;
+    costo_envio: number;
+    detalle: string;
+    fecha_pedido: string;
+    idDireccion: number;
+    idPedidos: number;
+    idPersona: number;
+    latitud: number;
+    longitud: number;
+    nombre: string;
+    subtotal: number;
+    telefono: string;
+}

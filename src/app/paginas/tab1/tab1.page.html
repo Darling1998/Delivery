@@ -1,49 +1,92 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <app-direcciones></app-direcciones>
-
-    <ion-buttons slot="end">
-      <ion-menu-button color="ocean" autoHide="true" menuId="primerMenu"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-
-  <ion-toolbar>
-    <ion-segment color="ocean" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
-      <ion-segment-button value="cervezas" layout="icon-start">
-        <ion-label class="ion-text-capitalize segmentos">Cervezas</ion-label>
-        <ion-icon size="large" name="beer"></ion-icon>
-      </ion-segment-button>
-
-      <ion-segment-button value="licores" layout="icon-start">
-        <i class="fas fa-2x fa-wine-bottle"></i>
-        <ion-label class="ion-text-capitalize segmentos">Licores</ion-label>
-      </ion-segment-button>
-
-      <ion-segment-button value="piqueos" layout="icon-start">
-        <i class="fab fa-2x fa-gulp"></i>
-        <ion-label class="ion-text-capitalize segmentos">Piqueos</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar #search mode="ios" class="ion-margin-top color-search" placeholder="Buscar Producto"
-      (ionChange)="buscar($event)">
-    </ion-searchbar>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div [ngSwitch]="type">
-    <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
-      <app-producto *ngFor="let item of listPro | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
+<ng-container *ngIf="roleId == 3">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <app-direcciones></app-direcciones>
+  
+      <ion-buttons slot="end">
+        <ion-menu-button color="ocean" autoHide="true" menuId="primerMenu"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  
+    <ion-toolbar>
+      <ion-segment color="ocean" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="cervezas" layout="icon-start">
+          <ion-label class="ion-text-capitalize segmentos">Cervezas</ion-label>
+          <ion-icon size="large" name="beer"></ion-icon>
+        </ion-segment-button>
+  
+        <ion-segment-button value="licores" layout="icon-start">
+          <i class="fas fa-2x fa-wine-bottle"></i>
+          <ion-label class="ion-text-capitalize segmentos">Licores</ion-label>
+        </ion-segment-button>
+  
+        <ion-segment-button value="piqueos" layout="icon-start">
+          <i class="fab fa-2x fa-gulp"></i>
+          <ion-label class="ion-text-capitalize segmentos">Piqueos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar #search mode="ios" class="ion-margin-top color-search" placeholder="Buscar Producto"
+        (ionChange)="buscar($event)">
+      </ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <div [ngSwitch]="type">
+      <div *ngSwitchCase="'cervezas'" class="ion-margin-bottom">
+        <app-producto *ngFor="let item of listPro | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
+      </div>
+  
+      <div *ngSwitchCase="'licores'" class="ion-margin-bottom">
+        <app-producto *ngFor="let item of listLic | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
+      </div>
+  
+      <div *ngSwitchCase="'piqueos'" class="ion-margin-bottom">
+        <app-producto *ngFor="let item of listPiq | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
+      </div>
     </div>
+  </ion-content>
+</ng-container>
 
-    <div *ngSwitchCase="'licores'" class="ion-margin-bottom">
-      <app-producto *ngFor="let item of listLic | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
-    </div>
 
-    <div *ngSwitchCase="'piqueos'" class="ion-margin-bottom">
-      <app-producto *ngFor="let item of listPiq | filtro:textBuscar:'nombre'" [product]="item"></app-producto>
-    </div>
-  </div>
-</ion-content>
+<ng-container *ngIf="roleId == 4">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button color="ocean" autoHide="true" menuId="primerMenu"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-item lines="none" color="transparent">
+      <ion-label class="ion-text-center" color="ocean">
+        <h1>Pedidos no atendidos</h1>
+      </ion-label>
+    </ion-item>
+
+    <ion-card *ngFor="let item of listPedidos">
+      <ion-card-content>
+        <ion-item-group>
+          <ion-icon slot="start" class="ion-margin-end" name="person"></ion-icon>
+          <strong style="margin-left: 5px;">{{item.nombre}} {{item.apellido}}</strong>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-icon slot="start" class="ion-margin-end" name="call"></ion-icon>
+          <strong style="margin-left: 5px;">{{item.telefono}}</strong>
+        </ion-item-group>
+        <ion-item-group> 
+          <ion-icon slot="start" class="ion-margin-end" name="cash"></ion-icon>
+          <strong style="margin-left: 5px;">{{ calcularTotal(item.subtotal, item.costo_envio) | currency}}</strong>
+        </ion-item-group>
+        <ion-fab vertical="center" horizontal="end" slot="end">
+          <ion-fab-button color="ocean" size="small">
+            <ion-icon name="checkmark"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</ng-container>
